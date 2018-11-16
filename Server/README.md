@@ -19,11 +19,11 @@
       };
       ```
   - 작업 흐름 및 파일명 정의
-    1. 대상 코드 수신 / 파일로 저장 : [server_receiver.c](https://github.com/BJ-Lim/hlsw-hackathon/blob/master/Server/src/server_receiver.c) (테스트중)
+    1. 대상 코드 수신 / 파일로 저장 : [server_receiver.c](https://github.com/BJ-Lim/hlsw-hackathon/blob/master/Server/src/server_receiver.c) (로컬 테스트 완료)
         - 소켓통신 이용
         - 파일 수신 후 fork하여 compile.sh 실행
-    2. 대상 코드 컴파일 : [compile.sh]() 
-    3. 결과 파일을 웹 서버로 전송 : [server_sender.c]() 
+    2. 대상 코드 컴파일 : [compile.sh]() (로컬 테스트 완료)
+    3. 결과 파일을 웹 서버로 전송 : [server_sender.c]() (로컬 테스트 완료)
     4. 중복성 검사 폴더로 파일 이동 : [compile.sh]()
     5. 정해진 시간에 중복성 체크 : [미정]()
         - [cron](https://zetawiki.com/wiki/%EB%A6%AC%EB%88%85%EC%8A%A4_%EB%B0%98%EB%B3%B5_%EC%98%88%EC%95%BD%EC%9E%91%EC%97%85_cron,_crond,_crontab) 사용
@@ -39,4 +39,5 @@
 - web_sender 소켓이 server_receiver로 meta 데이터를 전송하는 과정에서 데이터가 깨지는 현상 (해결 완료)
   -> send_meta 함수를 호출하지 않음
 - web_sender 소켓이 server_receiver로 파일을 전송하는 과정에서 데이터가 깨지는 현상 (해결 완료)
-  -> memset을 버퍼 사용전에 먼저 사용했어야 하는데, 사용하지 
+  -> memset을 버퍼 사용전에 먼저 사용했어야 하는데, 사용하지 않음
+  
