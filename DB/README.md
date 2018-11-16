@@ -1,7 +1,7 @@
 - 작업자 : 염희수
 
 
-## user(**id**,password,role)
+## user(id,password,role)
 ```
 사용자 정보 table
 
@@ -11,7 +11,7 @@
 
 ```
 
-## student(**student_number**,name)
+## student(student_number,name)
 ```
 학생 정보 table
 
@@ -22,7 +22,7 @@
 ```
 
 
-## professor(**pro_number**,name)
+## professor(pro_number,name)
 ```
 교수 정보 table
 
@@ -32,7 +32,7 @@
 ```
 
 
-## subject(**sub_id,year**,semester,class,title)
+## subject(sub_id,year,semester,class,title)
 ```
 과목 정보 table
 
@@ -44,7 +44,7 @@
 
 ```
 
-## assignment(**ass_number**,title,text,file,deadline)
+## assignment(ass_number,title,text,file,deadline)
 ```
 과제 정보 table
 
