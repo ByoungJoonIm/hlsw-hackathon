@@ -25,6 +25,15 @@ void set_meta(META * meta_data, char * argv[]){
 	meta_data->subject_id = atoi(argv[5]);
 	meta_data->assignment_id = atoi(argv[6]);
 }
+
+#ifdef DEBUG
+void check_meta(META * meta_data){
+	printf("meta_data->request_number : %d\n", meta_data->request_number);
+	printf("meta_data->id : %s\n", meta_data->id);
+	printf("meta_data->subject_id : %d\n", meta_data->subject_id);
+	printf("meta_data->assginment_id : %d\n", meta_data->assignment_id);
+}
+#endif
  
 int open_file(META * meta_data){
 	int fd;
@@ -59,13 +68,25 @@ void binding(struct sockaddr_in *server_addr,int server_sockfd, const char *ip, 
 	}
 }
 
+#ifdef DEBUG
+void check_buf(char *buf){
+	for(int i=0; i<30; i++)
+		printf("%c\n", buf[i]);
+}
+#endif
+
 void send_meta(META * meta, int server_sockfd){
 	char buf[BUFSIZE];
 
 	memset(buf, 0x00, BUFSIZE);
 	memcpy(buf, meta, sizeof(META));
 	write(server_sockfd, buf, SENDINGUNIT);
+#ifdef DEBUG
+	check_buf(buf);
+#endif
 }
+
+
 
 void read_and_send(int file_fd, int server_sockfd){
 	int read_size;
@@ -113,12 +134,20 @@ int main(int argc, char *argv[]) {
 
 	argument_check(argc);
 	set_meta(&meta_data, argv);
+
+#ifdef DEBUG
+	check_meta(&meta_data);
+#endif
 	fd = open_file(&meta_data);
 
 	socket_create(&server_sockfd);
 	binding(&server_addr, server_sockfd, argv[1], argv[2]);
 	
+	send_meta(&meta_data, server_sockfd);
 	read_and_send(fd, server_sockfd);
+#ifdef DEBUG
+	check_meta(&meta_data);
+#endif
 
 #ifdef DEBUG
 	receive_ack(server_sockfd);

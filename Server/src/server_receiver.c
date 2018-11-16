@@ -17,7 +17,7 @@
  */
 void argument_check(int argc){
 	if(argc != 2){
-		printf("usage : ./server port_number\n");
+		printf("usage : ./server_receiver port_number\n");
 		exit(1);
 	}
 }
@@ -61,20 +61,28 @@ void client_connect(int *client_socket, int server_socket, struct sockaddr_in *c
 	}
 }
 
-void receive_message(int client_socket){
+#ifdef DEBUG
+void check_buf(char *buf){
+	for(int i=0; i<30; i++)
+		printf("%c\n", buf[i]);
+}
+#endif
+
+void receive_message(META * meta_data, int client_socket){
 #ifdef DEBUG
 	int i = 0;
 #endif
 	int read_size = 0;
 	int fd;
 	char buff_rcv[BUFSIZE];
+	char file_name[BUFSIZE];
 
-	memset(buff_rcv, 0x00, BUFSIZE);
-	read(client_socket, buff_rcv, SENDINGUNIT);
-	strcat(buff_rcv, ".c");
-	fd = open(buff_rcv, O_WRONLY | O_CREAT | O_TRUNC, 0644);
+	strcpy(file_name, meta_data->id);
+	strcat(file_name, ".c");
+	fd = open(file_name, O_WRONLY | O_CREAT | O_TRUNC, 0644);
 
 	while(1){	//blocked here
+		memset(buff_rcv, 0x00, BUFSIZE);
 		read_size = read(client_socket, buff_rcv, SENDINGUNIT);
 
 		//check eof
@@ -91,17 +99,33 @@ void receive_message(int client_socket){
 		printf("received%d: %s\n",i, buff_rcv);
 #endif
 		write(fd, buff_rcv, strlen(buff_rcv));
-		memset(buff_rcv, 0x00, BUFSIZE);
 	}
 	close(fd);
 }
 
+#ifdef DEBUG
 void send_message(int *client_socket){
 	char buff_snd[BUFSIZE];
 
 	sprintf(buff_snd, "server ack\n");	//this message will change to compile message
 	write(*client_socket, buff_snd, strlen(buff_snd)+1);
-	close(*client_socket);
+}
+#endif
+
+void get_meta(META * meta_data, int client_socket){
+	char buff_rcv[BUFSIZE];
+
+	memset(buff_rcv, 0x00, BUFSIZE);
+	read(client_socket, buff_rcv, SENDINGUNIT);
+	memcpy(meta_data, buff_rcv, sizeof(META));
+
+#ifdef DEBUG
+	check_buf(buff_rcv);
+	printf("meta_data->request_number : %d\n", meta_data->request_number);
+	printf("meta_data->id : %s\n", meta_data->id);
+	printf("meta_data->subject_id : %d\n", meta_data->subject_id);
+	printf("meta_data->assginment_id : %d\n", meta_data->assignment_id);
+#endif
 }
 
 int main(int argc, char *argv[]){
@@ -109,6 +133,7 @@ int main(int argc, char *argv[]){
 	int client_socket;
 	struct sockaddr_in server_addr;
 	struct sockaddr_in client_addr;
+	META meta_data;
 
 	argument_check(argc);
 	socket_create(&server_socket);
@@ -118,7 +143,11 @@ int main(int argc, char *argv[]){
 
 	while(1){
 		client_connect(&client_socket, server_socket, &client_addr);
-		receive_message(client_socket);
+		get_meta(&meta_data, client_socket);
+		receive_message(&meta_data,client_socket);
+#ifdef DEBUG
 		send_message(&client_socket);
+#endif
+		close(client_socket);
 	}
 }
