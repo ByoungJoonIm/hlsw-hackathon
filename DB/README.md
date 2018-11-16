@@ -64,7 +64,7 @@
 
 ```
 
-##issue
+## issue
  - 1. foreign key설정 error (해결 11-16 23:51)
  
  
