@@ -12,7 +12,7 @@
 ```
 학생 정보 table
 
-- std_id       학번 (PK)
+- std_id       학번 (PK) - foreign key(user)
 - name         학생의 이름
 - cur_semester 학생의 현재 학기
 
@@ -23,7 +23,7 @@
 ```
 교수 정보 table
 
-- pro_id       사번 (PK)
+- pro_id       사번 (PK) - foreign key(user)
 - name         교수의 이름
 
 ```
@@ -58,11 +58,15 @@
 
 - ass_number       과제 번호 (PK)
 - std_id           학번(PK)
-- sub_id           과목코드(foreign key)
+- sub_id           과목코드(foreign key) - foreign key(assignment)
 - text             과제 내용
 - sub_date         제출일
 
 ```
 
+## issue
+ - 1. foreign key설정 error (해결 11-16 23:51)
+ 
+ 
 ## 구현
  - database내 스키마 생성완료(11-16 21:36)
