@@ -18,15 +18,15 @@
         int assignment_id;  //과제 고유 번호(해당 과목의 과제 일련번호)
       };
       ```
-  - 작업 흐름
-    - 대상 코드 수신 / 파일로 저장 : [server.c]()
-      - 소켓통신 이용
-      - 파일 수신 후 fork하여 compile.sh 실행
-    - 대상 코드 컴파일 : [compile.sh]()
-    - 결과 파일을 웹 서버로 전송 : [response.c]()
-    - 중복성 검사 폴더로 파일 이동 : [compile.sh]()
-    - 정해진 시간에 중복성 체크 : [미정]()
-      - [cron](https://zetawiki.com/wiki/%EB%A6%AC%EB%88%85%EC%8A%A4_%EB%B0%98%EB%B3%B5_%EC%98%88%EC%95%BD%EC%9E%91%EC%97%85_cron,_crond,_crontab) 사용
+  - 작업 흐름 및 파일명 정의
+    1. 대상 코드 수신 / 파일로 저장 : [server.c]()
+        - 소켓통신 이용
+        - 파일 수신 후 fork하여 compile.sh 실행
+    2. 대상 코드 컴파일 : [compile.sh]()
+    3. 결과 파일을 웹 서버로 전송 : [response.c]()
+    4. 중복성 검사 폴더로 파일 이동 : [compile.sh]()
+    5. 정해진 시간에 중복성 체크 : [미정]()
+        - [cron](https://zetawiki.com/wiki/%EB%A6%AC%EB%88%85%EC%8A%A4_%EB%B0%98%EB%B3%B5_%EC%98%88%EC%95%BD%EC%9E%91%EC%97%85_cron,_crond,_crontab) 사용
   
 ## ISSUE
 - 소켓으로 파일을 받은 후 결과를 전송할 때까지 소켓을 block 시킬 것인가?</br>
