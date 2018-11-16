@@ -51,7 +51,7 @@
 - ass_number       과제 번호 (PK)
 - title            과제 제목
 - text             과제 내용
-- deadlin          마감일
+- deadline         마감일
 
 ```
 
