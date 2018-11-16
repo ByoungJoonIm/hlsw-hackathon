@@ -1,16 +1,13 @@
 - 작업자 : 염희수
 
-
-## user(id,password,role)
-```
+## 스키마
+### user(id,password,role)
 사용자 정보 table
-
+```
 - id          사용자의 id (PK)
 - password    사용자의 password
 - role        사용자 계정에 대한 분류(학생0,교수&조교1,관리자2)
-
 ```
-
 ## student(student_number,name)
 ```
 학생 정보 table
