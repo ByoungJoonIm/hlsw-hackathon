@@ -27,7 +27,7 @@
 교수 정보 table
 
 - pro_id       사번 (PK)
-- name         학생의 이름
+- name         교수의 이름
 
 ```
 
