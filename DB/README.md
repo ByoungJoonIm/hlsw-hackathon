@@ -63,8 +63,10 @@
 - sub_date         제출일
 
 ```
+
 ##issue
- 1. foreign key설정 error (해결 11-16 23:51)
+ - 1. foreign key설정 error (해결 11-16 23:51)
+ 
  
 ## 구현
  - database내 스키마 생성완료(11-16 21:36)
