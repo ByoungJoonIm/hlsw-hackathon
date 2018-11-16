@@ -36,3 +36,4 @@
   ->기능상으로 소켓은 파일 전송만을 담당하는 것으로 구성하는 것이 나을 것 같다.</br>
   ->폴더 구조를 어떻게 설계할 것인가?
 - 원격 저장소와 지역 저장소 동기화 : [LINK](https://mylko72.gitbooks.io/git/content/remote/remote_sync.html)
+- web_sender 소켓이 server_receiver로 meta 데이터를 전송하는 과정에서 데이터가 깨지는 현상 
