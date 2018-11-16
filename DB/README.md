@@ -8,7 +8,7 @@
 - password    사용자의 password
 - role        사용자 계정에 대한 분류(학생0,교수&조교1,관리자2)
 ```
-## student(st_id,name,cur_semester)
+## student(std_id,name,cur_semester)
 ```
 학생 정보 table
 
