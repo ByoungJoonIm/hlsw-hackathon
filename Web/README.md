@@ -38,11 +38,12 @@
 ----------------------------------------
 ## 기능구현
 ----------------------------------------
+#### 서버
 - 서버세팅 
   - MSAZURE 가상머신 이용 - UBUNTU LTS 16.04 (16일 16:00 완료)
   - Apache2 설치 (16일 16:30 완료)
   - PHP 7.2 설치 (16일 16:30 완료)
-  - 수신 소켓 코딩 ([web_sender.c]())
-  - 송신 소켓 코딩 ([web_receiver.c]())
+  - 수신 소켓 코딩 ([web_sender.c](https://github.com/BJ-Lim/hlsw-hackathon/blob/master/Web/src/web_receiver.c))
+  - 송신 소켓 코딩 ([web_receiver.c](https://github.com/BJ-Lim/hlsw-hackathon/blob/master/Web/src/web_sender.c))
   
-
+- 테스트용 
