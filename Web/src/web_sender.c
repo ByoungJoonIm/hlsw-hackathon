@@ -17,6 +17,8 @@ void argument_check(int argc){
 			printf("usage : ./web_sender ip port meta_requst_number meta_id meta_subject_id meta_assignment_id\n");
 			exit(EXIT_FAILURE);
 		}
+
+
 }
 
 void set_meta(META * meta_data, char * argv[]){
@@ -39,8 +41,6 @@ int open_file(META * meta_data){
 	int fd;
 	char file_name[BUFSIZE];
 
-	getcwd(file_name, BUFSIZE);
-	strcat(file_name, "/files/./");
 	strcat(file_name, meta_data->id);
 	strcat(file_name, ".c");
 

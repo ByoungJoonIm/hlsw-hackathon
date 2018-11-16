@@ -7,10 +7,14 @@
 #include <sys/stat.h>
 #include <fcntl.h>
 #include <sys/socket.h>
+#include <sys/wait.h>
 #include "meta.h"
  
 #define BUFSIZE 1024
 #define SENDINGUNIT 1000
+
+const char *ip = "210.115.229.132";
+const char *port = "11000";
 
 /*
  	check program's arguments
@@ -128,6 +132,24 @@ void get_meta(META * meta_data, int client_socket){
 #endif
 }
 
+void compile(META * meta_data){
+	int pid;
+	int status;
+	char command[BUFSIZE];
+
+	pid = fork();
+
+	if( pid == 0 ){
+		strcpy(command, "./compile.sh ");
+		strcat(command, meta_data->id);
+		strcat(command, ".c");
+		system(command);
+
+		execl("./server_sender", "./server_sender", ip, port, "0", meta_data->id, "0", "0", NULL);
+	}
+	waitpid(-1, &status, WNOHANG);
+}
+
 int main(int argc, char *argv[]){
 	int server_socket;
 	int client_socket;
@@ -149,5 +171,6 @@ int main(int argc, char *argv[]){
 		send_message(&client_socket);
 #endif
 		close(client_socket);
+		compile(&meta_data);
 	}
 }
