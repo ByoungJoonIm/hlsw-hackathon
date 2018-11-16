@@ -43,12 +43,24 @@
 
 ## assignment(ass_number,title,text,deadline)
 ```
-과제 정보 table
+교수/조교가 업로드한 과제 정보 table
 
 - ass_number       과제 번호 (PK)
 - title            과제 제목
 - text             과제 내용
 - deadline         마감일
+
+```
+
+## std_assignment(ass_number,std_id,sub_id,text,sub_date)
+```
+학생이 제출한 과제 정보 table
+
+- ass_number       과제 번호 (PK)
+- std_id           학번(PK)
+- sub_id           과목코드(foreign key)
+- text             과제 내용
+- sub_date         제출일
 
 ```
 
