@@ -24,13 +24,14 @@ $file_name = "./files/" . $id . ".c";
 if(!file_exists("./files/")) mkdir("./files/");
 $file = fopen($file_name, "w+");
 $result = fwrite($file, $text);
-fclose($file);
+$result = fclose($file);
 
 // file_put_contents ($dir.'/test.txt', 'Hello File');
 
 if($result) {
-	echo "success make file : " . $file_name . "</br>";
-	$command = "./files/web_sender $ip $port $request_number $id $subject_id $assignment_id";
+	echo "success make file : " . $file_name . "<br>";
+	$command = "./files/web_sender {$ip} {$port} {$request_number} {$id} {$subject_id} {$assignment_id}";
+	echo $command . "<br>";
 	$exec_result = exec($command);
 	echo $exec_result;
 }

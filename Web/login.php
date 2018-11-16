@@ -15,7 +15,7 @@ include_once "database.php";
 $id = $_POST["id"];
 $password = $_POST["password"];
 
-$conn = dbConnection("52.231.69.134:3306", "danglingelse", "danglingelse", "danglingelse");
+$conn = dbConnection("52.231.69.134", "root", "1234", "danglingelse");
 
 if(!$conn) echo "<script>alert('connection failed!'); location.href('/');</script>";
 else echo "<script>alert('connection success!'); location.href('/');</script>";
