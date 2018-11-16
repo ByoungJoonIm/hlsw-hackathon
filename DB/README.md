@@ -41,14 +41,13 @@
 
 ```
 
-## assignment(ass_number,title,text,file,deadline)
+## assignment(ass_number,title,text,deadline)
 ```
 과제 정보 table
 
 - ass_number       과제 번호 (PK)
 - title            과제 제목
 - text             과제 내용
-- file             과제 
 - deadline         마감일
 
 ```
