@@ -10,6 +10,14 @@
     - 원격 컴퓨터 이용 - UBUNTU LTS 18.04 (16일 16:00 완료)
   - 데이터 구조
     - 메타 데이터([meta.h]())
+      ```
+      struct meta {
+        int request_number; //요청 종류
+        char id[10];        //요청자 id
+        int subject_id;     //과목 고유 번호
+        int assignment_id;  //과제 고유 번호(해당 과목의 과제 일련번호)
+      };
+      ```
   - 작업 흐름
     - 대상 코드 수신 / 파일로 저장 : [server.c]()
       - 소켓통신 이용
