@@ -67,9 +67,22 @@
 
 ```
 
++추가)
+## lecture
+```
+교수가 강의한 수업 정보 table
+[lecture]
+- id             id (PK) - foreign key(user)
+- sub_id         과목 id(PK) - foreign key(subject)
+```
+
+-------------------
+
+
 ## issue
  1. foreign key설정 error (해결 11-16 23:51)
  
- 
+ --------------------
 ## 구현
  - database내 스키마 생성완료(11-16 21:36)
+ - 추가 table 생성(lecture)
