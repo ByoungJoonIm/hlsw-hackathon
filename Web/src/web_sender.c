@@ -17,8 +17,6 @@ void argument_check(int argc){
 			printf("usage : ./web_sender ip port meta_requst_number meta_id meta_subject_id meta_assignment_id\n");
 			exit(EXIT_FAILURE);
 		}
-
-
 }
 
 void set_meta(META * meta_data, char * argv[]){
@@ -97,6 +95,7 @@ void read_and_send(int file_fd, int server_sockfd){
 	char buf[BUFSIZE];
 
 	while(1){
+		memset(buf, 0x00, BUFSIZE);
 		read_size = read(file_fd, buf, SENDINGUNIT);
 
 		if(read_size == 0){
@@ -111,7 +110,6 @@ void read_and_send(int file_fd, int server_sockfd){
 			printf("write error : ");
 			exit(EXIT_FAILURE);
 		}
-		memset(buf, 0x00, BUFSIZE);
 	}
 
 	memset(buf, 0xff, 4);
