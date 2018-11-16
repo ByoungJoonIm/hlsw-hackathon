@@ -1,7 +1,7 @@
 - 작업자 : 염희수
 
 ## 스키마
-### user(id,password,role)
+### user(***id***,password,role)
 사용자 정보 table
 ```
 - id          사용자의 id (PK)
