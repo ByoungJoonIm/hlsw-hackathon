@@ -52,6 +52,7 @@
 - title            과제 제목
 - text             과제 내용
 - deadline         마감일
+- sub_id           과목코드 - foreign key(subject)
 
 ```
 
