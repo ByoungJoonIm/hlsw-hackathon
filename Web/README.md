@@ -44,9 +44,14 @@
   - Apache2 설치 (16일 16:30 완료)
   - PHP 7.2 설치 (16일 16:30 완료)
   - 수신 소켓 코딩 ([web_sender.c](https://github.com/BJ-Lim/hlsw-hackathon/blob/master/Web/src/web_receiver.c))
-  - 송신 소켓 코딩 ([web_receiver.c](https://github.com/BJ-Lim/hlsw-hackathon/blob/master/Web/src/web_sender.c))
+  - 송신 소켓 코딩 ([web_receiver.c](https://github.com/BJ-Lim/hlsw-hackathon/blob/master/Web/src/web_sender.c)) (17일 1:49 완료)
 ----------------------------------------
 #### 웹 페이지
 - 데이터베이스 연결 및 쿼리 함수 (17일 1:05 완료)
 
 ----------------------------------------
+## ISSUE
+----------------------------------------
+#### 서버
+- 송신 소켓파일 오픈 에러 발생 (해결완료) <br>
+-> 파일의 경로 지정을 올바르게 바꾸어 해결
