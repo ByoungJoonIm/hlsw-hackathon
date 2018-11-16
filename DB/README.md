@@ -62,7 +62,6 @@
 [std_assignment]
 - ass_number       과제 번호 (PK)
 - std_id           학번(PK)
-- sub_id           과목코드(foreign key) - foreign key(assignment)
 - text             과제 내용
 - sub_date         제출일
 
