@@ -56,7 +56,7 @@
 
 ```
 
-## std_assignment(ass_number,std_id,sub_id,text,sub_date)
+## std_assignment(ass_number,std_id,text,sub_date)
 ```
 학생이 제출한 과제 정보 table
 [std_assignment]
