@@ -18,11 +18,11 @@
     - 정해진 시간에 중복성 체크 : [미정]()
       - [cron](https://zetawiki.com/wiki/%EB%A6%AC%EB%88%85%EC%8A%A4_%EB%B0%98%EB%B3%B5_%EC%98%88%EC%95%BD%EC%9E%91%EC%97%85_cron,_crond,_crontab) 사용
   
-  ## ISSUE
-  - 소켓으로 파일을 받은 후 결과를 전송할 때까지 소켓을 block 시킬 것인가?</br>
+## ISSUE
+- 소켓으로 파일을 받은 후 결과를 전송할 때까지 소켓을 block 시킬 것인가?</br>
   ->구현은 간단하나 몹시 비효율적이다.
-  - 수신 소켓과 송신 소켓을 따로 1개씩 사용할 것인가?</br>
+- 수신 소켓과 송신 소켓을 따로 1개씩 사용할 것인가?</br>
   ->구현은 복잡할 수 있으나 훨씬 효율적이다.</br>
-  ->기능상으로 소켓은 파일 전송만을 담당하는 것으로 구성하는 것이 나을 것 같다.
+  ->기능상으로 소켓은 파일 전송만을 담당하는 것으로 구성하는 것이 나을 것 같다.</br>
   ->폴더 구조를 어떻게 설계할 것인가?
- - 원격 저장소와 지역 저장소 동기화 : [LINK](https://mylko72.gitbooks.io/git/content/remote/remote_sync.html)
+- 원격 저장소와 지역 저장소 동기화 : [LINK](https://mylko72.gitbooks.io/git/content/remote/remote_sync.html)
