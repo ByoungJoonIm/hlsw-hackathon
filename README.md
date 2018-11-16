@@ -54,14 +54,15 @@
   - 과제 제출 여부 / 점수 리스트
 
 ## 기능 구현 (진행 상황)
-- Web Server
+각 서버의 세부 구현 사항은 링크를 클릭하면 볼 수 있습니다.
+- Web Server([링크](https://github.com/BJ-Lim/hlsw-hackathon/tree/master/Web))
   - 서버 셋팅
     - MSAZURE 가상머신 이용 - UBUNTU LTS 16.04 (16일 16:00 완료)
     - APACHE
     - PHP
   - 코드를 파일로 저장
   - 파일을 Compile 서버로 전송 : 소켓 통신
-- Compile Server
+- Compile Server([링크](https://github.com/BJ-Lim/hlsw-hackathon/blob/master/Server/README.md))
   - 서버 셋팅
     - 원격 컴퓨터 이용 - UBUNTU LTS 18.04 (16일 16:00 완료)
   - 대상 코드 수신
@@ -70,7 +71,7 @@
   - 결과 파일을 웹 서버로 전송
   - 대상 코드 이동
   - 중복성 검사 폴더로 파일 이동
-- DB Server
+- DB Server([링크](https://github.com/BJ-Lim/hlsw-hackathon/blob/master/DB/README.md))
   - 서버 셋팅 : MSAZURE 가상머신 이용 - UBUNTU LTS 16.04 (완료 16:00)
   - MariaDB 5.7.24 (16일 16:20 완료)
   - 스키마 구성
