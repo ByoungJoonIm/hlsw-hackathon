@@ -85,4 +85,5 @@
  --------------------
 ## 구현
  - database내 스키마 생성완료(11-16 21:36)
- - 추가 table 생성(lecture)
+ - 추가 table 생성(lecture) (11-17 00:01)
+ - database test environment 구축 (11-17 00:51)
