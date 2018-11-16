@@ -39,7 +39,9 @@ int open_file(META * meta_data){
 	int fd;
 	char file_name[BUFSIZE];
 
-	strcpy(file_name, meta_data->id);
+	getcwd(file_name, BUFSIZE);
+	strcat(file_name, "/files/./");
+	strcat(file_name, meta_data->id);
 	strcat(file_name, ".c");
 
 	fd = open(file_name, O_RDONLY);
@@ -93,6 +95,7 @@ void read_and_send(int file_fd, int server_sockfd){
 	char buf[BUFSIZE];
 
 	while(1){
+		memset(buf, 0x00, BUFSIZE);
 		read_size = read(file_fd, buf, SENDINGUNIT);
 
 		if(read_size == 0){
@@ -107,7 +110,6 @@ void read_and_send(int file_fd, int server_sockfd){
 			printf("write error : ");
 			exit(EXIT_FAILURE);
 		}
-		memset(buf, 0x00, BUFSIZE);
 	}
 
 	memset(buf, 0xff, 4);
@@ -131,6 +133,12 @@ int main(int argc, char *argv[]) {
 	int server_sockfd;
 	int fd;
 	META meta_data;
+
+#ifdef DEBUG
+	for(int i = 0; i < argc; i++){
+		printf("%s\n", argv[i]);
+	}
+#endif
 
 	argument_check(argc);
 	set_meta(&meta_data, argv);
