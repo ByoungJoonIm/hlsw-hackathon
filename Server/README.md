@@ -27,6 +27,10 @@
     4. 중복성 검사 폴더로 파일 이동 : [compile.sh]()
     5. 정해진 시간에 중복성 체크 : [미정]()
         - [cron](https://zetawiki.com/wiki/%EB%A6%AC%EB%88%85%EC%8A%A4_%EB%B0%98%EB%B3%B5_%EC%98%88%EC%95%BD%EC%9E%91%EC%97%85_cron,_crond,_crontab) 사용
+        
+## 프로그램 인자
+![screen_shot](https://github.com/BJ-Lim/hlsw-hackathon/blob/master/capture/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%A8%20%EC%9D%B8%EC%9E%90.JPG)
+- 현재는 server_sender에 불필요한 매개변수 포함
   
 ## ISSUE
 - 소켓으로 파일을 받은 후 결과를 전송할 때까지 소켓을 block 시킬 것인가?</br>
