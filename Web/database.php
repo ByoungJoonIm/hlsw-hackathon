@@ -34,7 +34,7 @@ function getAssignmentList($conn, $sub_id){
 }
 
 function getAssignment($conn, $ass_id){
-	$query = "SELECT * FROM assignment WHERE ass_num = '{$ass_id}'";
+	$query = "SELECT * FROM assignment WHERE ass_number = '{$ass_id}'";
 	$query_result = mysqli_query($conn, $query);
 	$result = array();
 	while($row = mysqli_fetch_array($query_result, MYSQLI_ASSOC)) {
