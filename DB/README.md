@@ -89,3 +89,5 @@
  - database내 스키마 생성완료(11-16 21:36)
  - 추가 table 생성(lecture) (11-17 00:01)
  - database test environment 구축 (11-17 00:51)
+ - assignment의 deadline 과 std_assignment의 sub_date를 datetime으로 변경(11-17 12:40)
+ 
