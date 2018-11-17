@@ -1,0 +1,19 @@
+create table user(id varchar(10) primary key not null,password varchar(10),role char);
+create table student(std_id varchar(10) primary key not null,name varchar(20),cur_semester varchar(3));
+create table professor(pro_id varchar(10) primary key not null,name varchar(20));
+create table subject(sub_id varchar(10) primary key not null,year varchar(5),semester varchar(3),class varchar(2),title varchar(20));
+create table assignment(ass_number varchar(10) primary key not null,sub_id varchar(10),title varchar(20),text varchar(4000),deadline varchar(10));
+create table std_assignment(ass_number varchar(10) not null,std_id varchar(10) not null,text varchar(4000),sub_data varchar(10),primary key(ass_number,std_id));
+create table lecture(id varchar(10) not null,sub_id varchar(10) not null,primary key(id,sub_id));
+
+alter table student add foreign key (std_id) references user(id);
+alter table professor add foreign key (pro_id) references user(id);
+alter table assignment add foreign key (sub_id) references subject(sub_id);
+alter table lecture add foreign key (id) references user(id);
+alter table lecture add foreign key (sub_id) references subject(sub_id);
+
+insert into user(id,password,role) values('20165156','1234',0),('20165157','1234',0),('M01234','1234',1);
+insert into student(std_id,name,cur_semester) values('20165156','1234',0),('20165157','1234',0);
+insert into professor(pro_id,name) values('M01234','조교님');
+insert into subject(sub_id,year,semester,class,title) values('0','2018','1','1','c프로그래밍'),('1','2018','1','2','c프로그래밍'),('2','2018','2','1','c프로그래밍');
+insert into lecture(id,sub_id) values('20165156','0'),('20165156','1'),('20165157','1'),('20165157','2'),('M01234','0'),('M01234','1'),('M01234','2');
