@@ -19,7 +19,7 @@ $id = $_SESSION["id"];
 <head>
     <meta charset="UTF-8">
     <title>Student Assignment Write Page</title>
-	<link rel="stylesheet" href="ass_style.css">
+	<link rel="stylesheet" href="ass_style2.css">
 </head>
 <!-- 학생 과제 제출 페이지 : 제목, 내용, 제출마감일, 첨부파일, 코드작성란 -->
 <body>

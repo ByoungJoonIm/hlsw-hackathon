@@ -44,15 +44,15 @@
 
 ```
 
-## assignment(ass_number,title,text,deadline)
+## assignment(ass_number,sub_id,title,text,deadline,week)
 ```
 교수/조교가 업로드한 과제 정보 table
 [assignment]
 - ass_number       과제 번호 (PK)
+- sub_id           과목코드 - foreign key(subject)
 - title            과제 제목
 - text             과제 내용
 - deadline         마감일
-- sub_id           과목코드 - foreign key(subject)
 - week             주차정보
 
 ```
