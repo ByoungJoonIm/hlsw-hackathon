@@ -14,7 +14,7 @@ $conn = dbConnection("52.231.71.254", "danglingelse", "xxxxx", "danglingelse");
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-	<link rel="stylesheet" href="style.css">
+	<link rel="stylesheet" href="ass_style2.css">
     <title>Subject LIst Page</title>
 	<style trpe="text/css"> a:hover{color:#8A0886;} </style>
 
@@ -41,8 +41,8 @@ $id = $_SESSION["id"];
 $subject_list = getSubjectList($conn, $id);
 	?>
     <div class="box">
-        <p><?php echo getName( $conn, $id ); ?>님 환영합니다.</p>
-        <p>학번 : <?php echo $id; ?> / 학년
+        <p align="center"><?php echo getName( $conn, $id ); ?>님 환영합니다.</p>
+        <p align="center">학번 : <?php echo $id; ?> / 학년
             : <?php echo (int) ( ( getSemester( $conn, $id ) + 1 ) / 2 ) ?></p>
     </div>
     <br><br>
