@@ -30,7 +30,7 @@ if(!isProfessor($conn, $id)) {
     <div class="box">
         <form method="POST" action="assignmentSub.php">
             <input type="hidden" name="sub_id" value="<?php echo $sub_id; ?>">
-            <p>제목 : <input type="title" value="Title" required > </p>
+            <p>제목 : <input type="text" name="title" value="Title" required > </p>
             <p>주차 : <?php echo "week" . ($ass_count + 1);?><input type="hidden" name="week" value="<?php echo "week" . ($ass_count + 1);?>" ></p>
             <p>제출마감일 : <input type="datetime-local" name="deadline" value="2018-11-05T23:59" > </p>
             <p>내용 :
