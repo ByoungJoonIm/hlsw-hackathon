@@ -1,0 +1,117 @@
+body{
+    display: table-cell;
+    vertical-align: middle;
+    background-color: #e0f2f1 ;
+	font-family: "Comic Sans MS";
+}
+
+html {
+    display: table;
+    margin: auto;
+}
+
+html, body {
+    height: 100%;
+	width : 100%;
+	background-color: "white" ;
+}
+
+input[type=text]{
+	width : 98%;
+	font-family: "Comic Sans MS";
+}
+
+.button {
+    background-color: #A9F5F2;
+    border: none;
+    color: black;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+	 margin: 0 auto;
+	display: table;
+	padding: .5em 2em .55em;
+	font-family: "Comic Sans MS";
+}
+
+
+a.no-uline {
+text-decoration:none;
+color : #084B8A;
+FONT-WEIGHT: bolder;
+ }
+
+input[type="text"]
+ {
+width:250px;
+ height:30px;
+ border-radius:4px;
+ border:1px solid #999999;
+ font-size:18px;
+ padding:10px;
+ color:#999999;
+ font-family: "Comic Sans MS";
+ }
+
+
+.wrapper {
+    
+    float: left;
+    display: block;
+    margin-bottom: 10px;
+}
+
+
+.blueone {
+	width : 80%;
+  margin-left: auto;
+  margin-right: auto;
+  border-collapse: collapse;
+  font-family: "Comic Sans MS";
+}
+.blueone th {
+  padding: 10px;
+  color: #168;
+  border-bottom: 3px solid #168;
+  text-align: left;
+}
+.blueone td {
+  color: #669;
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+.blueone tr:hover td {
+  color: #004;
+}
+
+
+ .box {
+	 
+	  
+      background: #CEF6F5;
+      border: 6px solid #CEF6F5;
+      height: 100px;
+      margin: 20px;
+      padding: 20px;
+      
+	  border-radius: 15px;
+	  font-family: "Comic Sans MS";
+	  font-weight: bold;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
