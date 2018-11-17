@@ -1,0 +1,195 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+ <TITLE>server_receiver.c</TITLE>
+<META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+  <script type="text/javascript">
+  <!--
+   function ZweiFrames(URL1,F1,URL2,F2)
+   {
+    parent.frames[F1].location.href=URL1;
+    parent.frames[F2].location.href=URL2;
+   }
+  //-->
+  </script>
+</HEAD>
+<BODY BGCOLOR="#ffffff" style="margin-left:25">
+<HR>
+<H3><CENTER>server_receiver.c</CENTER></H3><HR>
+<PRE>
+#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;string.h&gt;
+#include &lt;unistd.h&gt;
+#include &lt;arpa/inet.h&gt;
+#include &lt;sys/types.h&gt;
+#include &lt;sys/stat.h&gt;
+#include &lt;fcntl.h&gt;
+#include &lt;sys/socket.h&gt;
+#include &lt;sys/wait.h&gt;
+#include &quot;meta.h&quot;
+ 
+#define BUFSIZE 1024
+#define SENDINGUNIT 1000
+
+<A NAME="0"></A>/*
+ 	check program's arguments
+ */
+<FONT color="#0000ff"><div style="position:absolute;left:0"><A HREF="javascript:ZweiFrames('match0-0.html#0',2,'match0-top.html#0',1)"><IMG SRC="back.gif" ALT="other" BORDER="0" ALIGN="left"></A></div><B>void argument_check(int argc){
+	if(argc != 4){
+		printf(&quot;usage : ./server_receiver server_port_number web_ip web_port_number\n&quot;);
+		exit(1);
+	}
+}
+
+void socket_create(int *server_socket){
+	*server_socket = socket(PF_INET, SOCK_STREAM, 0);
+	if(-1 == *server_socket){
+		printf(&quot;server socket create failed\n&quot;);
+		exit(1);
+	}
+}
+
+void binding(struct sockaddr_in *server_addr, const char *port, int server_socket){
+	memset(server_addr, 0, sizeof(struct sockaddr_in));
+	server_addr-&gt;sin_family     = AF_INET;
+	server_addr-&gt;sin_port       = htons(atoi(port));
+	server_addr-&gt;sin_addr.s_addr= htonl(INADDR_ANY);
+
+	if(-1 == bind(server_socket, (struct sockaddr*)server_addr, sizeof(struct sockaddr_in))){
+		printf(&quot;bind() error&quot;);
+		exit(1);
+	}
+}
+
+void listen_mode(int server_socket){
+	if(-1 == listen(server_socket, 5)){
+		printf(&quot;wait mode setting failed\n&quot;);
+		exit(1);
+	}
+}
+
+void client_connect(int *client_socket, int server_socket, struct sockaddr_in *client_addr){
+	int client_addr_size;
+
+	client_addr_size  = sizeof(struct sockaddr_in);
+	*client_socket     = accept(server_socket, (struct sockaddr*)client_addr, &amp;client_addr_size);
+
+	if (-1 == *client_socket){
+		printf(&quot;client connecting failed&quot;);
+		exit(1);
+	}
+}
+
+#ifdef DEBUG
+void check_buf(char *buf){
+	for(int i=0; i&lt;30; i++)
+		printf(&quot;%c\n&quot;, buf[i]);
+}
+#endif
+
+void receive_message(META * meta_data, int client_socket){
+#ifdef DEBUG
+	int i = 0;
+#endif
+	int read_size = 0;
+	int fd;
+	char buff_rcv[BUFSIZE];
+	char file_name[BUFSIZE];
+
+	strcpy(file_name, meta_data-&gt;id);
+	strcat(file_name, &quot;.c&quot;);
+	fd = open(file_name, O_WRONLY | O_CREAT | O_TRUNC, 0644);
+
+	while(1){	//blocked here
+		memset(buff_rcv, 0x00, BUFSIZE);
+		read_size = read(client_socket, buff_rcv, SENDINGUNIT);
+
+		//check eof
+		if((int)(*buff_rcv) == EOF){
+#ifdef DEBUG
+			printf(&quot;%d\n&quot;, (int)(*buff_rcv));
+			printf(&quot;finished file!\n&quot;);
+#endif
+			break;
+		}
+
+#ifdef DEBUG
+		i++;
+		printf(&quot;received%d: %s\n&quot;,i, buff_rcv);
+#endif
+		write(fd, buff_rcv, strlen(buff_rcv));
+	}
+	close(fd);
+}
+
+#ifdef DEBUG
+void send_message(int *client_socket){
+	char buff_snd[BUFSIZE];
+
+	sprintf(buff_snd, &quot;server ack\n&quot;);	//this message will change to compile message
+	write(*client_socket, buff_snd, strlen(buff_snd)+1);
+}
+#endif
+
+void get_meta(META * meta_data, int client_socket){
+	char buff_rcv[BUFSIZE];
+
+	memset(buff_rcv, 0x00, BUFSIZE);
+	read(client_socket, buff_rcv, SENDINGUNIT);
+	memcpy(meta_data, buff_rcv, sizeof(META));
+
+#ifdef DEBUG
+	check_buf(buff_rcv);
+	printf(&quot;meta_data-&gt;request_number : %d\n&quot;, meta_data-&gt;request_number);
+	printf(&quot;meta_data-&gt;id : %s\n&quot;, meta_data-&gt;id);
+	printf(&quot;meta_data-&gt;subject_id : %d\n&quot;, meta_data-&gt;subject_id);
+	printf(&quot;meta_data-&gt;assginment_id : %d\n&quot;, meta_data-&gt;assignment_id);
+#endif
+}
+
+void compile(META * meta_data, char * argv[]){
+	int pid;
+	int status;
+	char command[BUFSIZE];
+
+	pid = fork();
+
+	if( pid == 0 ){
+		strcpy(command, &quot;./compile.sh &quot;);
+		strcat(command, meta_data-&gt;id);
+		strcat(command, &quot;.c&quot;);
+		system(command);
+
+		execl(&quot;./server_sender&quot;, &quot;./server_sender&quot;, argv[2], argv[3], &quot;0&quot;, meta_data-&gt;id, &quot;0&quot;, &quot;0&quot;, NULL);
+	}
+	waitpid(-1, &amp;status, WNOHANG);
+}
+
+int main(int argc, char *argv[]){
+	int server_socket;
+	int client_socket;
+	struct sockaddr_in server_addr;
+	struct sockaddr_in client_addr;
+	META meta_data;
+
+	argument_check(argc);
+	socket_create(&amp;server_socket);
+	binding(&amp;server_addr, argv[1], server_socket);
+
+	listen_mode(server_socket);
+
+	while(1){
+		client_connect(&amp;client_socket, server_socket, &amp;client_addr);
+		get_meta(&amp;meta_data, client_socket);
+		receive_message(&amp;meta_data,client_socket);
+#ifdef DEBUG
+		send_message(&amp;client_socket);
+#endif
+		close(client_socket);
+		compile(&amp;meta_data, argv);
+	}
+}</B></FONT>
+</PRE>
+</BODY>
+</HTML>
