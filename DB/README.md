@@ -1,6 +1,6 @@
 - 작업자 : 염희수
 
-## 스키마
+## 1. 스키마
 ## user(id,password,role)
 
 
@@ -53,6 +53,7 @@
 - text             과제 내용
 - deadline         마감일
 - sub_id           과목코드 - foreign key(subject)
+- week             주차정보
 
 ```
 
@@ -79,15 +80,15 @@
 -------------------
 
 
-## issue
- 1. foreign key설정 error (해결 11-16 23:51)
- 2. database에 로컬접속은 가능하나, 원격접속이 불가능 -> port 3306 접속불가능 (해결 11-17 09:40)
- 3. database 다시 구축 (해결 11-17 09:50)
+# 2. issue
+ 1. foreign key설정 error -> table 생성후 alter를 이용해 외래키설정 (해결 11-16 23:51)
+ 2. database에 로컬접속은 가능하나, 원격접속이 불가능 -> 3306 포트가 사용불가 상태임을 확인 -> ms azure에서 설정(해결 11-17 09:40)
+ 3. (but 2번방법을 찾지 못해 수시간 동안 )포트사용을 위해 -> database 다시 구축 (해결 11-17 09:50)
  
  --------------------
-## 구현
+# 3. 구현
  - database내 스키마 생성완료(11-16 21:36)
  - 추가 table 생성(lecture) (11-17 00:01)
  - database test environment 구축 (11-17 00:51)
  - assignment의 deadline 과 std_assignment의 sub_date를 datetime으로 변경(11-17 12:40)
- 
+ - assignment에 week추가 -> 과제의 주차정보를 확인하기 위함 (11-17 14:40)
