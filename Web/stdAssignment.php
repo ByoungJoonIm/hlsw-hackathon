@@ -25,9 +25,9 @@ $id = $_SESSION["id"];
 <body>
     <div>
         <p>제목 : <?php echo $ass['title']; ?></p>
+        <p>주차 : <?php echo $ass['week']; ?></p>
         <p>제출마감일 : <?php echo date("Y-m-d\TH:i:s", $ass['deadline']); ?></p>
         <p>내용 : <?php echo $ass['text']; ?> </p>
-        <p>첨부파일 : <?php echo $ass['file']; ?></p>
         <?php if(!isProfessor($conn, $id)){ ?>
         <p>
             코드작성<br>

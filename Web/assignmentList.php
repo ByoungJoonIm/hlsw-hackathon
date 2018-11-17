@@ -51,11 +51,12 @@ $conn = dbConnection("52.231.71.254", "danglingelse", "xxxxx", "danglingelse");
 		<?php foreach($assignment_list as $ass) { ?>
             <tr> <td>[<?php echo $ass['week']; ?>]</td> <td><a href="stdAssignment.php?ass_id=<?php echo $ass['ass_id']; ?>" class="no-uline"><?php echo $ass['title']; ?></a></td> <td><?php echo date("Y-m-d\TH:i:s", $ass['deadline']); ?></td> </tr>
 		<?php } ?>
-        <!-- Test Data -->
+        <!-- Test Data
         <tr> <td>[week02]</td> <td><a href="#" class="no-uline">Test2 Assignment</a></td> <td>2018-11-11</td> </tr>
         <tr> <td>[week03]</td> <td><a href="#" class="no-uline">Test3 Assignment</a></td> <td>2018-11-18</td> </tr>
         <tr> <td>[week04]</td> <td><a href="#" class="no-uline">Test4 Assignment</a></td> <td>2018-11-25</td> </tr>
         <tr> <td>[week05]</td> <td><a href="#" class="no-uline">Test5 Assignment</a></td> <td>2018-12-01</td> </tr>
+        -->
     </table>
 	<?php
 }

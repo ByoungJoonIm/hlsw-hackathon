@@ -34,7 +34,7 @@ function getAssignmentList($conn, $sub_id){
 }
 
 function getAssignment($conn, $ass_id){
-	$query = "SELECT * FROM assignment WHERE ass_id = '{$ass_id}'";
+	$query = "SELECT * FROM assignment WHERE ass_num = '{$ass_id}'";
 	$query_result = mysqli_query($conn, $query);
 	$result = array();
 	while($row = mysqli_fetch_array($query_result, MYSQLI_ASSOC)) {
@@ -45,7 +45,7 @@ function getAssignment($conn, $ass_id){
 
 function addAssignment($conn, $title, $text, $deadline, $sub_id, $week){
 	$ass_id = count(getAssignmentList($conn, -1));
-	$query = "INSERT INTO assignment VALUES('{$ass_id}', '{$title}', '{$text}', '{$deadline}', '{$sub_id}', '{$week}')";
+	$query = "INSERT INTO assignment VALUES('{$ass_id}', '{$sub_id}', '{$title}', '{$text}', '{$deadline}', '{$week}')";
 	$query_result = mysqli_query($conn, $query);
 	if(!$query_result) return $ass_id;
 	else return $query_result;
@@ -90,13 +90,13 @@ function login($conn, $id, $password){
 }
 
 function getName($conn, $id){
-	$query = "SELECT professor.name, student.name FROM professor, student WHERE std_id = '{$id}' OR pro_id = '{$id}'";
+	$query = "SELECT * FROM professor, student WHERE std_id = '{$id}' OR pro_id = '{$id}'";
 	$query_result = mysqli_query($conn, $query);
 	$result = array();
 	while($row = mysqli_fetch_array($query_result, MYSQLI_ASSOC)) {
 		array_push($result, $row);
 	}
-	if(count($result) == 1) return $result[0]["student.name"] . $result[0]["professor.name"];
+	if(count($result) == 1) return $result[0]["name"];
 	else return 'None';
 }
 
