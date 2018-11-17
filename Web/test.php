@@ -5,12 +5,6 @@
  * Date: 2018-11-16
  * Time: 오후 9:25
  */
-
-ini_set('display_errors', 1);
-ini_set('error_reporting', E_ALL);
-ini_set('register_globals', 'off');
-
-
 $ip = $_POST["ip"];
 $port = $_POST["port"];
 $request_number = $_POST["request_number"];

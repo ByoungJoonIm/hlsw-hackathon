@@ -6,10 +6,6 @@
  * Time: 오후 10:46
  */
 
-ini_set('display_errors', 1);
-ini_set('error_reporting', E_ALL);
-ini_set('register_globals', 'off');
-
 session_start();
 
 include_once "database.php";
