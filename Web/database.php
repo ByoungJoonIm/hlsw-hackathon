@@ -80,5 +80,13 @@ function updateStdAssignment($conn, $ass_id, $std_id, $text, $sub_date){
 function login($conn, $id, $password){
 	$query = "SELECT * FROM user WHERE id = '{$id}' AND password = '{$password}'";
 	$query_result = mysqli_query($conn, $query);
-	return $query_result;
+	$row = mysqli_fetch_array($query_result);
+	return $row["id"] != "";
+}
+
+function getName($conn, $id){
+	$query = "SELECT name FROM professor, student WHERE std_id = '{$id}' OR pro_id = '{$id}'";
+	$query_result = mysqli_query($conn, $query);
+	$row = mysqli_fetch_array($query_result);
+	return $row["name"];
 }

@@ -10,12 +10,23 @@ ini_set('display_errors', 1);
 ini_set('error_reporting', E_ALL);
 ini_set('register_globals', 'off');
 
+session_start();
+
 include_once "database.php";
 
 $id = $_POST["id"];
 $password = $_POST["password"];
 
-$conn = dbConnection("52.231.69.134", "root", "1234", "danglingelse");
+$conn = dbConnection("52.231.71.254", "danglingelse", "xxxxx", "danglingelse");
 
-if(!$conn) echo "<script>alert('connection failed!'); location.href('/');</script>";
-else echo "<script>alert('connection success!'); location.href('/');</script>";
+if(!$conn){
+	echo "<script>alert('connection failed!'); location.replace('/');</script>";
+}
+
+if(login($conn, $id, $password)){
+	$_SESSION["id"] = $id;
+	echo "<script>alert('login success!'); location.replace('/subjectList.html');</script>";
+}else{
+	echo "<script>alert('login failed!'); location.replace('/');</script>";
+}
+
