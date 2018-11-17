@@ -63,7 +63,7 @@ $subject_list = getSubjectList($conn, $id);
                 if(count($assignment_list) != 0) {
                 $last_assignment = $assignment_list[count($assignment_list) - 1];
             ?>
-            <td><a href="stdAssignment.php?ass_id=<?php echo $last_assignment['ass_num']; ?>"
+            <td><a href="stdAssignment.php?ass_id=<?php echo $last_assignment['ass_number']; ?>"
                    class="no-uline"><?php echo "[{$last_assignment['week']}] {$last_assignment['title']}"; ?></a></td>
 	        <?php }?>
         </tr>
