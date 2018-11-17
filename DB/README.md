@@ -53,6 +53,7 @@
 - text             과제 내용
 - deadline         마감일
 - sub_id           과목코드 - foreign key(subject)
+- week             주차정보
 
 ```
 
@@ -90,4 +91,4 @@
  - 추가 table 생성(lecture) (11-17 00:01)
  - database test environment 구축 (11-17 00:51)
  - assignment의 deadline 과 std_assignment의 sub_date를 datetime으로 변경(11-17 12:40)
- 
+ - assignment에 week추가 -> 과제의 주차정보를 확인하기 위함 (11-17 14:40)
