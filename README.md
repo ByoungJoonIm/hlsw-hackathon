@@ -11,6 +11,7 @@
 - 웹 서버에서 과제 제출을 위해 코드를 제출하면, 이 코드는 컴파일 서버로 전송되어 DB 서버와 함께 처리된 결과를 웹 서버로 다시 전송합니다.
 - 기존 코드 채점 플랫폼과의 차이점은 학교라는 특성에 맞춰 제출자 코드간의 중복성을 오픈소스 프로그램인 JFLAG를 활용하여 테스트합니다.
   - 사용 예정 모듈 : [JFLAG](https://github.com/jplag/jplag)
+  - 테스트 완료 : [test_page]()
 
 ## 전제
 - 이 프로젝트는 보안에 대해서 대부분 고려하지 않습니다.
@@ -58,23 +59,22 @@
 - Web Server([링크](https://github.com/BJ-Lim/hlsw-hackathon/tree/master/Web))
   - 서버 셋팅
     - MSAZURE 가상머신 이용 - UBUNTU LTS 16.04 (16일 16:00 완료)
-    - APACHE
-    - PHP
-  - 코드를 파일로 저장
-  - 파일을 Compile 서버로 전송 : 소켓 통신
+    - APACHE - 2 (완료)
+    - PHP - 7.2.13 (완료)
+  - 코드를 파일로 저장 (완료)
+  - 파일을 Compile 서버로 전송 : 소켓 통신 (완료)
 - Compile Server([링크](https://github.com/BJ-Lim/hlsw-hackathon/blob/master/Server/README.md))
   - 서버 셋팅
     - 원격 컴퓨터 이용 - UBUNTU LTS 18.04 (16일 16:00 완료)
-  - 대상 코드 수신
-  - 대상 코드 저장
-  - 대상 코드 컴파일
-  - 결과 파일을 웹 서버로 전송
-  - 대상 코드 이동
-  - 중복성 검사 폴더로 파일 이동
+  - 대상 코드 수신 (완료)
+  - 대상 코드 저장 (완료)
+  - 대상 코드 컴파일 (완료)
+  - 결과 파일을 웹 서버로 전송 (완료)
+  - 코드의 중복성 체크 (미완 : Jplag의 test만 완료)
 - DB Server([링크](https://github.com/BJ-Lim/hlsw-hackathon/blob/master/DB/README.md))
   - 서버 셋팅 : MSAZURE 가상머신 이용 - UBUNTU LTS 16.04 (완료 16:00)
   - MariaDB 5.7.24 (16일 16:20 완료)
-  - 스키마 구성
+  - 스키마 구성 (완료)
 
 ## 회의록
 회의는 기본 1시간 이내에 1번 이상 진행을 목표로 하고있습니다. 회의 내용은 회의록 및 문서 전체에 바로 적용됩니다.</br>
