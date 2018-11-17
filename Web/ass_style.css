@@ -3,7 +3,7 @@
 body{
     display: table-cell;
     vertical-align: middle;
-    background-color: #CEF6F5 ;
+    background-color: #e0f2f1 ;
 	font-family: "Comic Sans MS";
 	
 }
@@ -12,13 +12,13 @@ body{
 html {
     display: table;
     margin: auto;
-	background-color: #CEF6F5 ;
+	background-color: #e0f2f1 ;
 	overflow : auto;
 	
 }
 
 html, body {
-    height: 100%;
+    
 	font-family: "Comic Sans MS";
 }
 
