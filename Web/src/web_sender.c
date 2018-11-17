@@ -41,8 +41,17 @@ int open_file(META * meta_data){
 	int fd;
 	char file_name[BUFSIZE];
 
+#ifdef DEBUG
 	strcat(file_name, meta_data->id);
 	strcat(file_name, ".c");
+#endif
+
+#ifndef DEBUG
+	getcwd(file_name, BUFSIZE);
+	strcat(file_name, "/files/./");
+	strcat(file_name, meta_data->id);
+	strcat(file_name, ".c");
+#endif
 
 	fd = open(file_name, O_RDONLY);
 	if(fd == -1){

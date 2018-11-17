@@ -13,15 +13,12 @@
 #define BUFSIZE 1024
 #define SENDINGUNIT 1000
 
-const char *ip = "210.115.229.132";
-const char *port = "11000";
-
 /*
  	check program's arguments
  */
 void argument_check(int argc){
-	if(argc != 2){
-		printf("usage : ./server_receiver port_number\n");
+	if(argc != 4){
+		printf("usage : ./server_receiver server_port_number web_ip web_port_number\n");
 		exit(1);
 	}
 }
@@ -132,7 +129,7 @@ void get_meta(META * meta_data, int client_socket){
 #endif
 }
 
-void compile(META * meta_data){
+void compile(META * meta_data, char * argv[]){
 	int pid;
 	int status;
 	char command[BUFSIZE];
@@ -145,7 +142,7 @@ void compile(META * meta_data){
 		strcat(command, ".c");
 		system(command);
 
-		execl("./server_sender", "./server_sender", ip, port, "0", meta_data->id, "0", "0", NULL);
+		execl("./server_sender", "./server_sender", argv[2], argv[3], "0", meta_data->id, "0", "0", NULL);
 	}
 	waitpid(-1, &status, WNOHANG);
 }
@@ -171,6 +168,6 @@ int main(int argc, char *argv[]){
 		send_message(&client_socket);
 #endif
 		close(client_socket);
-		compile(&meta_data);
+		compile(&meta_data, argv);
 	}
 }

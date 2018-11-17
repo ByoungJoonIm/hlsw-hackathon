@@ -14,7 +14,7 @@
 
 void argument_check(int argc){
 		if(argc != 7){
-			printf("usage : ./web_sender ip port meta_requst_number meta_id meta_subject_id meta_assignment_id\n");
+			printf("usage : ./server_sender web_ip web_port meta_requst_number meta_id meta_subject_id meta_assignment_id\n");
 			exit(EXIT_FAILURE);
 		}
 
@@ -45,6 +45,10 @@ int open_file(META * meta_data){
 	strcat(file_name, "/");
 	strcat(file_name, meta_data->id);
 	strcat(file_name, ".rs");
+
+#ifdef DEBUG
+	printf("[server_sender] open file path : %s\n", file_name);
+#endif
 
 	fd = open(file_name, O_RDONLY);
 	if(fd == -1){
