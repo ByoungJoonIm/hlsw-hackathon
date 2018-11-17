@@ -77,17 +77,8 @@ void receive_message(META * meta_data, int client_socket){
 	char buff_rcv[BUFSIZE];
 	char file_name[BUFSIZE];
 
-#ifdef DEBUG
 	strcpy(file_name, meta_data->id);
 	strcat(file_name, ".rs");
-#endif
-
-#ifndef DEBUG
-	getcwd(file_name, BUFSIZE);
-	strcat(file_name, "/files/./");
-	strcat(file_name, meta_data->id);
-	strcat(file_name, ".rs");
-#endif
 
 	fd = open(file_name, O_WRONLY | O_CREAT | O_TRUNC, 0644);
 

@@ -1,0 +1,55 @@
+#assignment 디자인을 위한 css
+
+body{
+    display: table-cell;
+    vertical-align: middle;
+    background-color: #CEF6F5 ;
+	font-family: "Comic Sans MS";
+	
+}
+
+
+html {
+    display: table;
+    margin: auto;
+	background-color: #CEF6F5 ;
+	overflow : auto;
+	
+}
+
+html, body {
+    height: 100%;
+	font-family: "Comic Sans MS";
+}
+
+
+
+.button {
+    background-color: #A9F5F2;
+    border: none;
+    color: black;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+	margin: 0 auto;
+	display: table;
+	padding: .5em 2em .55em;
+	font-family: "Comic Sans MS";
+	border-radius: 15px;
+}
+
+
+.box {
+		
+      height: 100%;
+      margin: 20px;
+      padding: 20px;
+      width: 85%;
+	  border-radius: 15px;
+	  font-family: "Comic Sans MS";
+	  font-weight: bold;
+    }
+
