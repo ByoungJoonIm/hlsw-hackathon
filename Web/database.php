@@ -16,7 +16,7 @@ function getSubjectList($conn, $id){
 	$query = "SELECT * FROM subject WHERE sub_id IN (SELECT sub_id FROM lecture WHERE id = '{$id}')";
 	$query_result = mysqli_query($conn, $query);
 	$result = array();
-	while($row = mysqli_fetch_array($query_result)) {
+	while($row = mysqli_fetch_array($query_result, MYSQLI_ASSOC)) {
 		array_push($result, $row);
 	}
 	return $result;
@@ -26,7 +26,7 @@ function getAssignmentList($conn, $sub_id){
 	$query = "SELECT * FROM assignment WHERE sub_id = '{$sub_id}'";
 	$query_result = mysqli_query($conn, $query);
 	$result = array();
-	while($row = mysqli_fetch_array($query_result)) {
+	while($row = mysqli_fetch_array($query_result, MYSQLI_ASSOC)) {
 		array_push($result, $row);
 	}
 	return $result;
@@ -36,7 +36,7 @@ function getAssignment($conn, $ass_id){
 	$query = "SELECT * FROM assignment WHERE ass_id = '{$ass_id}'";
 	$query_result = mysqli_query($conn, $query);
 	$result = array();
-	while($row = mysqli_fetch_array($query_result)) {
+	while($row = mysqli_fetch_array($query_result, MYSQLI_ASSOC)) {
 		array_push($result, $row);
 	}
 	return $result;
@@ -59,7 +59,7 @@ function getStdAssignment($conn, $ass_id, $id){
 	$query = "SELECT * FROM std_assignment WHERE ass_number = '{$ass_id}' AND std_id = '{$id}'";
 	$query_result = mysqli_query($conn, $query);
 	$result = array();
-	while($row = mysqli_fetch_array($query_result)) {
+	while($row = mysqli_fetch_array($query_result, MYSQLI_ASSOC)) {
 		array_push($result, $row);
 	}
 	return $result;
@@ -80,13 +80,31 @@ function updateStdAssignment($conn, $ass_id, $std_id, $text, $sub_date){
 function login($conn, $id, $password){
 	$query = "SELECT * FROM user WHERE id = '{$id}' AND password = '{$password}'";
 	$query_result = mysqli_query($conn, $query);
-	$row = mysqli_fetch_array($query_result);
-	return $row["id"] != "";
+	$result = array();
+	while($row = mysqli_fetch_array($query_result, MYSQLI_ASSOC)) {
+		array_push($result, $row);
+	}
+	return count($result);
 }
 
 function getName($conn, $id){
-	$query = "SELECT name FROM professor, student WHERE std_id = '{$id}' OR pro_id = '{$id}'";
+	$query = "SELECT * FROM professor, student WHERE std_id = '{$id}' OR pro_id = '{$id}'";
 	$query_result = mysqli_query($conn, $query);
-	$row = mysqli_fetch_array($query_result);
-	return $row["name"];
+	$result = array();
+	while($row = mysqli_fetch_array($query_result, MYSQLI_ASSOC)) {
+		array_push($result, $row);
+	}
+	if(count($result) == 1) return $result[0]["name"];
+	else return 'None';
+}
+
+function getSemester($conn, $id){
+	$query = "SELECT * FROM student WHERE std_id = '{$id}'";
+	$query_result = mysqli_query($conn, $query);
+	$result = array();
+	while($row = mysqli_fetch_array($query_result, MYSQLI_ASSOC)) {
+		array_push($result, $row);
+	}
+	if(count($result) == 1) return $result[0]["cur_semester"];
+	else return 'None';
 }
