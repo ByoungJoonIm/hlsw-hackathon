@@ -14,7 +14,7 @@ $conn = dbConnection("52.231.71.254", "danglingelse", "xxxxx", "danglingelse");
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-	<link rel="stylesheet" href="ass_style2.css">
+	<link rel="stylesheet" href="ass_style.css">
     <title>Assignment List Page</title>
 	<style trpe="text/css"> a:hover{color:#8A0886;} </style>
 	
