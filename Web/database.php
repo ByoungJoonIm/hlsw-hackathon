@@ -108,3 +108,14 @@ function getSemester($conn, $id){
 	if(count($result) == 1) return $result[0]["cur_semester"];
 	else return 'None';
 }
+
+function getSubjectName($conn, $sub_id){
+	$query = "SELECT * FROM subject WHERE sub_id = '{$sub_id}'";
+	$query_result = mysqli_query($conn, $query);
+	$result = array();
+	while($row = mysqli_fetch_array($query_result, MYSQLI_ASSOC)) {
+		array_push($result, $row);
+	}
+	if(count($result) == 1) return $result[0]["title"];
+	else return 'None';
+}
