@@ -2,6 +2,7 @@
 include_once "database.php";
 
 session_start();
+session_reset();
 
 $conn = dbConnection("52.231.71.254", "danglingelse", "xxxxx", "danglingelse");
 

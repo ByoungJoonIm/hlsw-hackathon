@@ -29,6 +29,6 @@ if(!$result) { ?>
 <?php }else{ ?>
 	<script>
         alert('과제 업로드했습니다!');
-        location.replace("stdAssignment.php?ass_id=<?php echo $result - 1; ?>")
+        location.replace('assignmentList.php?sub_id=<?php echo $sub_id; ?>');
 	</script>
 <?php } ?>
