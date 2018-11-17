@@ -14,7 +14,7 @@ $conn = dbConnection("52.231.71.254", "danglingelse", "xxxxx", "danglingelse");
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-	<link rel="stylesheet" href="style.css">
+	<link rel="stylesheet" href="ass_style2.css">
     <title>Assignment List Page</title>
 	<style trpe="text/css"> a:hover{color:#8A0886;} </style>
 	
@@ -45,7 +45,7 @@ $conn = dbConnection("52.231.71.254", "danglingelse", "xxxxx", "danglingelse");
         <p>학번 : <?php echo $id; ?> / 학년
             : <?php echo (int) ( ( getSemester( $conn, $id ) + 1 ) / 2 ) ?></p>
     </div>
-    <h3>과목명 : <?php echo getSubjectName($conn, $sub_id); ?></h3>
+    <h3>&nbsp;&nbsp;&nbsp;과목명 : <?php echo getSubjectName($conn, $sub_id); ?></h3>
     <br><br>
     <table class="blueone">
         <tr> <th>주차</th> <th>제목</th> <th>일정(마감일)</th> </tr>
