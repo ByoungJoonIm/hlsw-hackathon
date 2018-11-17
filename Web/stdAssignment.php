@@ -8,11 +8,11 @@ include_once "database.php";
 session_start();
 
 $conn = dbConnection("52.231.71.254", "danglingelse", "xxxxx", "danglingelse");
-$sub_id = $_GET['sub_id'];
+$ass_id = $_GET['ass_id'];
 
-$assignment_list = getAssignmentList($conn, $sub_id);
-$ass_count = count($assignment_list);
+$ass = getAssignment($conn, $ass_id);
 $id = $_SESSION["id"];
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -24,23 +24,27 @@ $id = $_SESSION["id"];
 <!-- 학생 과제 제출 페이지 : 제목, 내용, 제출마감일, 첨부파일, 코드작성란 -->
 <body>
     <div>
-        <p>제목 : Test Assignment</p>
-        <p>제출마감일 : 2018-11-05 오후 11:59</p>
-        <p>내용 : Assignment Text test long stance test long stance test long stance test long stance test long stance test long stance test long stance test long stance test long stance test long stance test long stance test long stance test long stance test long stance test long stance test long stance test long stance test long stance test long stance test long stance test long stance test long stance test long stance test long stance test long stance test long stance test long stance test long stance test long stance test long stance test long stance test long stance </p>
-        <p>첨부파일 : result.png</p>
+        <p>제목 : <?php echo $ass['title']; ?></p>
+        <p>제출마감일 : <?php echo date("Y-m-d\TH:i:s", $ass['deadline']); ?></p>
+        <p>내용 : <?php echo $ass['text']; ?> </p>
+        <p>첨부파일 : <?php echo $ass['file']; ?></p>
+        <?php if(!isProfessor($conn, $id)){ ?>
         <p>
             코드작성<br>
             <textarea rows="10" cols="100">
 #include <stdio.h>
+
 int main(){
- return 0;
- }
+    return 0;
+}
             </textarea>
         </p>
-        <p>실행결과 : abcdefghijklmnopqrstuvwxyz</p>
-        <p><button>코드 실행</button> <button>제출</button></p>
+        <p>실행결과 : </p>
+        <p><button class="button" >코드 실행</button> <button class="button" >제출</button></p>
+        <?php }else{ ?>
+        <p><button class="button">제출정보</button></p>
+        <?php }?>
     </div>
-	
 
 </body>
 </html>

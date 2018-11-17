@@ -29,6 +29,7 @@ $result = fclose($file);
 // file_put_contents ($dir.'/test.txt', 'Hello File');
 
 if($result) {
+	$command = "./files/web_sender {$ip} {$port} {$request_number} {$id} {$subject_id} {$assignment_id}";
 	$exec_result = exec($command);
 	echo $exec_result;
 }
