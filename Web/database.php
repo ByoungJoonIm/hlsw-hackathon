@@ -23,7 +23,8 @@ function getSubjectList($conn, $id){
 }
 
 function getAssignmentList($conn, $sub_id){
-	$query = "SELECT * FROM assignment WHERE sub_id = '{$sub_id}'";
+	if($sub_id != -1) $query = "SELECT * FROM assignment WHERE sub_id = '{$sub_id}'";
+	else $query = "SELECT * FROM assignment";
 	$query_result = mysqli_query($conn, $query);
 	$result = array();
 	while($row = mysqli_fetch_array($query_result, MYSQLI_ASSOC)) {
@@ -42,9 +43,9 @@ function getAssignment($conn, $ass_id){
 	return $result;
 }
 
-function addAssignment($conn, $title, $text, $deadline, $sub_id){
-	$ass_id = count(getAssignmentList($conn, $sub_id));
-	$query = "INSERT INTO assignment VALUES('{$ass_id}', '{$title}', '{$text}', '{$deadline}', '{$sub_id}')";
+function addAssignment($conn, $title, $text, $deadline, $sub_id, $week){
+	$ass_id = count(getAssignmentList($conn, -1));
+	$query = "INSERT INTO assignment VALUES('{$ass_id}', '{$title}', '{$text}', '{$deadline}', '{$sub_id}', '{$week}')";
 	$query_result = mysqli_query($conn, $query);
 	return $query_result;
 }
@@ -118,4 +119,15 @@ function getSubjectName($conn, $sub_id){
 	}
 	if(count($result) == 1) return $result[0]["title"];
 	else return 'None';
+}
+
+function isProfessor($conn, $id){
+	$query = "SELECT * FROM professor WHERE pro_id = '{$id}'";
+	$query_result = mysqli_query($conn, $query);
+	$result = array();
+	while($row = mysqli_fetch_array($query_result, MYSQLI_ASSOC)) {
+		array_push($result, $row);
+	}
+	if(count($result) == 1) return true;
+	else return false;
 }

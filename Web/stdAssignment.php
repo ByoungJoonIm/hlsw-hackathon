@@ -1,3 +1,19 @@
+<?php
+ini_set('display_errors', 1);
+ini_set('error_reporting', E_ALL);
+ini_set('register_globals', 'off');
+
+include_once "database.php";
+
+session_start();
+
+$conn = dbConnection("52.231.71.254", "danglingelse", "xxxxx", "danglingelse");
+$sub_id = $_GET['sub_id'];
+
+$assignment_list = getAssignmentList($conn, $sub_id);
+$ass_count = count($assignment_list);
+$id = $_SESSION["id"];
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

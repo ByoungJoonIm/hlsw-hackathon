@@ -8,7 +8,6 @@ include_once "database.php";
 session_start();
 
 $conn = dbConnection("52.231.71.254", "danglingelse", "xxxxx", "danglingelse");
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -60,6 +59,11 @@ $conn = dbConnection("52.231.71.254", "danglingelse", "xxxxx", "danglingelse");
     </table>
 	<?php
 }
+    if(isProfessor($conn, $id)){
+        ?>
+            <button type="submit" onclick="location.replace('assignment.php?sub_id=<?php echo $sub_id; ?>')">과제 추가</button>
+        <?php
+    }
 ?>
 </body>
 </html>
