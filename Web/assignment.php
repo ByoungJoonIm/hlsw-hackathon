@@ -22,7 +22,7 @@ if(!isProfessor($conn, $id)) {
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-	<link rel="stylesheet" href="ass_style.css">
+	<link rel="stylesheet" href="ass_style2.css">
     <title>Assignment Page</title>
 </head>
 <body>
