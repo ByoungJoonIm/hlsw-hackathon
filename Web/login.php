@@ -25,7 +25,7 @@ if(!$conn){
 
 if(login($conn, $id, $password)){
 	$_SESSION["id"] = $id;
-	echo "<script>alert('login success!'); location.replace('/subjectList.html');</script>";
+	echo "<script>alert('login success!'); location.replace('subjectList.php');>";
 }else{
 	echo "<script>alert('login failed!'); location.replace('/');</script>";
 }
