@@ -1,0 +1,74 @@
+body{
+    display: table-cell;
+    vertical-align: middle;
+    background-color: #e0f2f1 ;
+	font-family: "times new roman"; 
+}
+
+html {
+    display: table;
+    margin: auto;
+}
+
+html, body {
+    height: 100%;
+	background-color: "white" ;
+}
+
+input[type=text]{
+	width : 98%;
+	align : center;
+}
+
+.button {
+    background-color: #A9F5F2;
+    border: none;
+    color: black;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+	 margin: 0 auto;
+	display: table;
+	padding: .5em 2em .55em;
+}
+
+
+input[type="text"]
+ {
+width:250px;
+ height:30px;
+ border-radius:4px;
+ border:1px solid #999999;
+ font-size:18px;
+ padding:10px;
+ color:#999999;
+ }
+
+.wrapper {
+    
+    float: left;
+    display: block;
+    margin-bottom: 10px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

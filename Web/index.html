@@ -2,16 +2,23 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Main Page</title>
+	<link rel="stylesheet" href="style.css">
+    <title>Login</title>
 </head>
 <body>
-<h2>Login</h2>
-<div id="login">
-    <form id="login_form" action="login.php" method="POST">
-        ID : <input name="id" required ><br>
-        PASSWORD : <input name="password" required ><br>
-        <button onsubmit="">login</button>
-    </form>
+<h2 align="center">Login</h2>
+<div class="wrapper">
+	<form id="login_form" action="login.php" method="POST" FONT face="impact">
+    <div class="wrap-input">
+        <input name="id" class="input-block-level" type="text" placeholder="id" required></input>
+    </div>
+	<br>
+    <div class="wrap-input">
+        <input name="pass" class="input-block-level" type="text" placeholder="password" required></input>
+    </div>
+	<br>
+		<button class="button" onsubmit="" >login</button>
+	</form>
 </div>
 </body>
 </html>
