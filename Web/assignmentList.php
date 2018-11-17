@@ -8,7 +8,6 @@ include_once "database.php";
 session_start();
 
 $conn = dbConnection("52.231.71.254", "danglingelse", "xxxxx", "danglingelse");
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -48,7 +47,7 @@ $conn = dbConnection("52.231.71.254", "danglingelse", "xxxxx", "danglingelse");
     <h3>&nbsp;&nbsp;&nbsp;과목명 : <?php echo getSubjectName($conn, $sub_id); ?></h3>
     <br><br>
     <table class="blueone">
-        <tr> <th>주차</th> <th>제목</th> <th>일정(마감일)</th> </tr>
+        <tr> <th>주차</th> <th>제목</th> <th>제출마감일</th> </tr>
 		<?php foreach($assignment_list as $ass) { ?>
             <tr> <td>[<?php echo $ass['week']; ?>]</td> <td><a href="stdAssignment.php?ass_id=<?php echo $ass['ass_id']; ?>" class="no-uline"><?php echo $ass['title']; ?></a></td> <td><?php echo $ass['deadline']; ?></td> </tr>
 		<?php } ?>
@@ -60,6 +59,11 @@ $conn = dbConnection("52.231.71.254", "danglingelse", "xxxxx", "danglingelse");
     </table>
 	<?php
 }
+    if(isProfessor($conn, $id)){
+        ?>
+            <button type="submit" onclick="location.replace('assignment.php?sub_id=<?php echo $sub_id; ?>')">과제 추가</button>
+        <?php
+    }
 ?>
 </body>
 </html>
